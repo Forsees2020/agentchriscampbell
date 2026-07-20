@@ -1,696 +1,294 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Central Florida Home Buyer's Guide | Expert Orlando Real Estate</title>
-    <!-- Google Fonts & FontAwesome -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        :root {
-            --primary-navy: #0A192F;
-            --secondary-navy: #172A45;
-            --accent-gold: #C5A059;
-            --accent-gold-hover: #E0B86C;
-            --text-dark: #23272A;
-            --text-muted: #5A6578;
-            --bg-light: #F8F9FA;
-            --card-white: #FFFFFF;
-            --border-color: #E2E8F0;
-            --radius: 8px;
-            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
-            --shadow-md: 0 10px 30px rgba(10,25,47,0.08);
-            --shadow-lg: 0 20px 40px rgba(10,25,47,0.12);
-            --transition: all 0.3s ease;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            color: var(--text-dark);
-            background-color: var(--bg-light);
-            line-height: 1.6;
-        }
-
-        h1, h2, h3, h4, h5 {
-            font-family: 'Playfair Display', serif;
-            color: var(--primary-navy);
-            font-weight: 700;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-            transition: var(--transition);
-        }
-
-        /* --- Header & Navigation --- */
-        .navbar {
-            position: sticky;
-            top: 0;
-            background-color: rgba(10, 25, 47, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .brand-logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: #FFF;
-        }
-
-        .brand-logo i {
-            color: var(--accent-gold);
-            font-size: 1.8rem;
-        }
-
-        .brand-logo-text {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-
-        .brand-logo-text span {
-            color: var(--accent-gold);
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: #E6F1FF;
-            font-size: 0.9rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .nav-links a:hover, .nav-links a.active {
-            color: var(--accent-gold);
-        }
-
-        .cta-btn {
-            background-color: var(--accent-gold);
-            color: var(--primary-navy);
-            padding: 0.6rem 1.4rem;
-            border-radius: var(--radius);
-            font-weight: 600;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border: 1px solid var(--accent-gold);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .cta-btn:hover {
-            background-color: transparent;
-            color: var(--accent-gold);
-        }
-
-        /* --- Hero Section --- */
-        .hero {
-            position: relative;
-            background: linear-gradient(rgba(10, 25, 47, 0.75), rgba(10, 25, 47, 0.85)), 
-                        url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
-            padding: 6rem 5% 5rem;
-            color: #FFF;
-            text-align: center;
-        }
-
-        .hero-content {
-            max-width: 850px;
-            margin: 0 auto;
-        }
-
-        .hero-subtitle {
-            color: var(--accent-gold);
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            font-weight: 600;
-            letter-spacing: 2px;
-            margin-bottom: 1rem;
-        }
-
-        .hero h1 {
-            color: #FFF;
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            color: #8892B0;
-            margin-bottom: 2rem;
-        }
-
-        .hero-badges {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-            margin-top: 2rem;
-        }
-
-        .badge-chip {
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(197, 160, 89, 0.3);
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            color: #E6F1FF;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .badge-chip i {
-            color: var(--accent-gold);
-        }
-
-        /* --- Main Layout --- */
-        .page-container {
-            max-width: 1200px;
-            margin: 4rem auto;
-            padding: 0 5%;
-            display: grid;
-            grid-template-columns: 280px 1fr;
-            gap: 3rem;
-        }
-
-        /* Sidebar Nav */
-        .sidebar {
-            position: sticky;
-            top: 100px;
-            height: fit-content;
-        }
-
-        .sticky-menu {
-            background-color: var(--card-white);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius);
-            padding: 1.5rem;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .sticky-menu h3 {
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--accent-gold);
-        }
-
-        .sticky-menu ul {
-            list-style: none;
-        }
-
-        .sticky-menu li {
-            margin-bottom: 0.75rem;
-        }
-
-        .sticky-menu a {
-            display: block;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            padding: 0.4rem 0.6rem;
-            border-radius: 4px;
-        }
-
-        .sticky-menu a:hover {
-            background-color: var(--bg-light);
-            color: var(--primary-navy);
-            font-weight: 600;
-        }
-
-        /* Content Area */
-        .guide-content {
-            display: flex;
-            flex-direction: column;
-            gap: 3rem;
-        }
-
-        .guide-step {
-            background: var(--card-white);
-            border-radius: var(--radius);
-            border: 1px solid var(--border-color);
-            padding: 2.5rem;
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition);
-        }
-
-        .guide-step:hover {
-            box-shadow: var(--shadow-md);
-        }
-
-        .step-header {
-            display: flex;
-            align-items: center;
-            gap: 1.2rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .step-number {
-            background-color: var(--primary-navy);
-            color: var(--accent-gold);
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
-            font-weight: 700;
-            flex-shrink: 0;
-        }
-
-        .step-header h2 {
-            font-size: 1.75rem;
-        }
-
-        .guide-step p {
-            color: var(--text-muted);
-            margin-bottom: 1.25rem;
-            font-size: 0.98rem;
-        }
-
-        .checklist-box {
-            background-color: var(--bg-light);
-            border-left: 4px solid var(--accent-gold);
-            padding: 1.25rem;
-            border-radius: 0 var(--radius) var(--radius) 0;
-            margin: 1.5rem 0;
-        }
-
-        .checklist-box h4 {
-            font-size: 1rem;
-            margin-bottom: 0.75rem;
-            color: var(--primary-navy);
-        }
-
-        .checklist-box ul {
-            list-style: none;
-        }
-
-        .checklist-box li {
-            position: relative;
-            padding-left: 1.5rem;
-            margin-bottom: 0.5rem;
-            color: var(--text-dark);
-            font-size: 0.92rem;
-        }
-
-        .checklist-box li::before {
-            content: "\f00c";
-            font-family: "Font Awesome 6 Free";
-            font-weight: 900;
-            position: absolute;
-            left: 0;
-            color: var(--accent-gold);
-        }
-
-        /* --- Official Resource Hub Cards --- */
-        .resource-section {
-            background: var(--primary-navy);
-            border-radius: var(--radius);
-            padding: 3rem 2.5rem;
-            color: #FFF;
-            margin-top: 1rem;
-        }
-
-        .resource-section h2 {
-            color: #FFF;
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-            text-align: center;
-        }
-
-        .resource-section p.sub {
-            color: #8892B0;
-            text-align: center;
-            margin-bottom: 2.5rem;
-        }
-
-        .resource-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .resource-card {
-            background: var(--secondary-navy);
-            border: 1px solid rgba(197, 160, 89, 0.2);
-            border-radius: var(--radius);
-            padding: 1.75rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: var(--transition);
-        }
-
-        .resource-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-gold);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .card-badge {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--accent-gold);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .resource-card h3 {
-            color: #FFF;
-            font-size: 1.25rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .resource-card p {
-            color: #8892B0;
-            font-size: 0.88rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .resource-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--accent-gold);
-            font-weight: 600;
-            font-size: 0.88rem;
-        }
-
-        .resource-link:hover {
-            color: var(--accent-gold-hover);
-            gap: 12px;
-        }
-
-        /* --- Footer --- */
-        footer {
-            background-color: var(--primary-navy);
-            color: #8892B0;
-            padding: 4rem 5% 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .footer-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 2.5rem;
-            margin-bottom: 3rem;
-        }
-
-        .footer-col h4 {
-            color: #FFF;
-            font-size: 1.1rem;
-            margin-bottom: 1.2rem;
-            position: relative;
-        }
-
-        .footer-col h4::after {
-            content: '';
-            position: absolute;
-            bottom: -6px;
-            left: 0;
-            width: 30px;
-            height: 2px;
-            background-color: var(--accent-gold);
-        }
-
-        .footer-col p {
-            font-size: 0.9rem;
-            line-height: 1.6;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.6rem;
-        }
-
-        .footer-links a {
-            color: #8892B0;
-            font-size: 0.9rem;
-        }
-
-        .footer-links a:hover {
-            color: var(--accent-gold);
-        }
-
-        .footer-bottom {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            text-align: center;
-            font-size: 0.85rem;
-        }
-
-        /* --- Responsive Design --- */
-        @media (max-width: 900px) {
-            .page-container {
-                grid-template-columns: 1fr;
-            }
-
-            .sidebar {
-                display: none;
-            }
-
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Buyer Guide & Resources | Christopher Campbell PA</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body { font-family: 'Montserrat', sans-serif; }
+    .font-serif-luxury { font-family: 'Cormorant Garamond', serif; }
+  </style>
 </head>
-<body>
+<body class="bg-[#0F1115] text-[#F9F9F8] antialiased">
 
-    <!-- Header / Navigation -->
-    <nav class="navbar">
-        <a href="#" class="brand-logo">
-            <i class="fa-solid fa-house-chimney-window"></i>
-            <div class="brand-logo-text">ORLANDO <span>LUXURY</span> REALTY</div>
-        </a>
-        <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Listings</a></li>
-            <li><a href="#" class="active">Buying Guide</a></li>
-            <li><a href="#">Selling</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-        <button class="cta-btn">Consult an Agent</button>
+  <!-- Floating Navigation Bar -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-[#0F1115]/90 backdrop-blur-md border-b border-[#E5D3B3]/15 px-6 lg:px-12 py-4 flex justify-between items-center">
+    <!-- Brand Title -->
+    <a href="index.html" class="flex flex-col">
+      <span class="font-serif-luxury text-2xl md:text-3xl tracking-[0.15em] font-bold text-[#E5D3B3] uppercase">
+        Christopher Campbell PA
+      </span>
+      <span class="text-[10px] uppercase tracking-[0.25em] text-[#F9F9F8]/70 -mt-1 font-light">
+        Charles Rutenberg Realty Orlando
+      </span>
+      <span class="text-[8px] uppercase tracking-[0.35em] text-[#F9F9F8]/40 mt-0.5">
+        Luxury Real Estate & Capital Advisory
+      </span>
+    </a>
+    
+    <!-- Main Navigation Links -->
+    <nav class="hidden md:flex space-x-8 text-xs tracking-[0.2em] uppercase font-light text-[#F9F9F8]/80">
+      <a href="index.html" class="hover:text-[#E5D3B3] transition-colors">Home</a>
+      <a href="buyers.html" class="text-[#E5D3B3] font-normal">Buyers</a>
+      <a href="sellers.html" class="hover:text-[#E5D3B3] transition-colors">Sellers</a>
+      <a href="investors.html" class="hover:text-[#E5D3B3] transition-colors">Investors</a>
     </nav>
 
-    <!-- Hero Section -->
-    <header class="hero">
-        <div class="hero-content">
-            <div class="hero-subtitle">Comprehensive Buyer's Guide</div>
-            <h1>Navigating Central Florida Real Estate</h1>
-            <p>Your step-by-step roadmap to buying a home in Orlando and surrounding counties with confidence, backed by verified resources from local, state, and national REALTOR® associations.</p>
-            <div class="hero-badges">
-                <span class="badge-chip"><i class="fa-solid fa-shield-halved"></i> NAR Endorsed Standards</span>
-                <span class="badge-chip"><i class="fa-solid fa-sun"></i> Florida Realtors® Guidelines</span>
-                <span class="badge-chip"><i class="fa-solid fa-location-dot"></i> Local ORRA Expertise</span>
-            </div>
+    <!-- Call To Action -->
+    <a href="#consultation" class="hidden sm:inline-block border border-[#E5D3B3] text-[#E5D3B3] px-5 py-2.5 text-xs uppercase tracking-[0.15em] hover:bg-[#E5D3B3] hover:text-[#0F1115] transition-all">
+      Consult an Agent
+    </a>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="relative pt-40 pb-20 px-6 lg:px-12 bg-gradient-to-b from-[#171A21] to-[#0F1115] border-b border-[#E5D3B3]/10">
+    <div class="max-w-5xl mx-auto text-center">
+      <span class="text-[#E5D3B3] uppercase text-xs tracking-[0.3em] mb-3 block">Comprehensive Buyer's Guide</span>
+      <h1 class="font-serif-luxury text-4xl md:text-6xl font-light leading-tight mb-6">
+        Navigating Central Florida <br/><em class="italic text-[#E5D3B3]">Real Estate Acquisition</em>
+      </h1>
+      <p class="text-[#F9F9F8]/70 text-sm md:text-base max-w-3xl mx-auto font-light leading-relaxed mb-8">
+        Your step-by-step roadmap to buying a home in Orlando and surrounding counties with confidence, backed by verified resources from local, state, and national REALTOR® associations.
+      </p>
+
+      <!-- Accreditation Badges -->
+      <div class="flex flex-wrap justify-center gap-4 text-xs font-light text-[#F9F9F8]/80">
+        <span class="border border-[#E5D3B3]/20 bg-[#0F1115]/50 px-4 py-2 flex items-center gap-2">
+          <i class="fa-solid fa-shield-halved text-[#E5D3B3]"></i> NAR Endorsed Standards
+        </span>
+        <span class="border border-[#E5D3B3]/20 bg-[#0F1115]/50 px-4 py-2 flex items-center gap-2">
+          <i class="fa-solid fa-sun text-[#E5D3B3]"></i> Florida Realtors® Guidelines
+        </span>
+        <span class="border border-[#E5D3B3]/20 bg-[#0F1115]/50 px-4 py-2 flex items-center gap-2">
+          <i class="fa-solid fa-location-dot text-[#E5D3B3]"></i> Local ORRA Expertise
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Layout -->
+  <div class="max-w-6xl mx-auto px-6 lg:px-12 py-16 grid grid-cols-1 lg:grid-cols-4 gap-12">
+    
+    <!-- Sticky Table of Contents Sidebar -->
+    <aside class="lg:col-span-1 hidden lg:block">
+      <div class="sticky top-28 border border-[#E5D3B3]/20 bg-[#0F1115]/80 p-6 backdrop-blur-md">
+        <h3 class="font-serif-luxury text-lg text-[#E5D3B3] uppercase tracking-wider mb-4 pb-2 border-b border-[#E5D3B3]/20">
+          Guide Contents
+        </h3>
+        <ul class="space-y-3 text-xs tracking-wider uppercase font-light text-[#F9F9F8]/70">
+          <li><a href="#step-1" class="hover:text-[#E5D3B3] transition-colors block">1. Financial Prep</a></li>
+          <li><a href="#step-2" class="hover:text-[#E5D3B3] transition-colors block">2. Market Research</a></li>
+          <li><a href="#step-3" class="hover:text-[#E5D3B3] transition-colors block">3. Agent Selection</a></li>
+          <li><a href="#step-4" class="hover:text-[#E5D3B3] transition-colors block">4. Offers & Term</a></li>
+          <li><a href="#step-5" class="hover:text-[#E5D3B3] transition-colors block">5. Due Diligence</a></li>
+          <li><a href="#official-resources" class="hover:text-[#E5D3B3] transition-colors block text-[#E5D3B3]">Official Links</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- Main Guide Sections -->
+    <main class="lg:col-span-3 space-y-12">
+
+      <!-- Step 1 -->
+      <section id="step-1" class="border border-[#E5D3B3]/20 bg-white/[0.02] p-8 md:p-10 relative">
+        <div class="flex items-center gap-4 mb-6">
+          <span class="font-serif-luxury text-3xl font-bold text-[#E5D3B3] border border-[#E5D3B3]/40 w-12 h-12 flex items-center justify-center">01</span>
+          <h2 class="font-serif-luxury text-2xl md:text-3xl font-light text-[#F9F9F8]">Financial Preparation & Mortgage Readiness</h2>
         </div>
-    </header>
-
-    <!-- Main Container -->
-    <div class="page-container">
+        <p class="text-xs md:text-sm text-[#F9F9F8]/70 leading-relaxed mb-6 font-light">
+          Before touring properties in Central Florida, evaluating your financial foundation is vital. Getting pre-approved sets a defined budget and shows sellers that you are a qualified, serious buyer in competitive markets like Orange and Seminole counties.
+        </p>
         
-        <!-- Sidebar Navigation -->
-        <aside class="sidebar">
-            <nav class="sticky-menu">
-                <h3>Guide Contents</h3>
-                <ul>
-                    <li><a href="#step-1">1. Financial Preparation</a></li>
-                    <li><a href="#step-2">2. Local Market Research</a></li>
-                    <li><a href="#step-3">3. Agent Selection</a></li>
-                    <li><a href="#step-4">4. Offers & Negotiation</a></li>
-                    <li><a href="#step-5">5. Inspections & Closing</a></li>
-                    <li><a href="#official-resources">Official Realtor® Links</a></li>
-                </ul>
-            </nav>
-        </aside>
+        <div class="border-l-2 border-[#E5D3B3] bg-[#0F1115]/60 p-6 space-y-3">
+          <h4 class="text-xs uppercase tracking-[0.2em] text-[#E5D3B3] font-semibold">Key Steps in Financial Readiness</h4>
+          <ul class="space-y-2 text-xs text-[#F9F9F8]/80 font-light">
+            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-[#E5D3B3] mt-0.5"></i> <span><strong>Check Your Credit Profile:</strong> Aim for optimal credit scores to secure competitive mortgage rates.</span></li>
+            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-[#E5D3B3] mt-0.5"></i> <span><strong>Establish Your Budget:</strong> Factor in home purchase price, property taxes, homeowners insurance, and HOA fees.</span></li>
+            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-[#E5D3B3] mt-0.5"></i> <span><strong>Secure Pre-Approval:</strong> Consult with a reputable lender to obtain a formal pre-approval letter.</span></li>
+            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-[#E5D3B3] mt-0.5"></i> <span><strong>Explore Assistance Programs:</strong> First-time buyers may qualify for down payment assistance programs through state initiatives.</span></li>
+          </ul>
+        </div>
+      </section>
 
-        <!-- Main Content -->
-        <main class="guide-content">
+      <!-- Step 2 -->
+      <section id="step-2" class="border border-[#E5D3B3]/20 bg-white/[0.02] p-8 md:p-10">
+        <div class="flex items-center gap-4 mb-6">
+          <span class="font-serif-luxury text-3xl font-bold text-[#E5D3B3] border border-[#E5D3B3]/40 w-12 h-12 flex items-center justify-center">02</span>
+          <h2 class="font-serif-luxury text-2xl md:text-3xl font-light text-[#F9F9F8]">Understanding the Central Florida Market</h2>
+        </div>
+        <p class="text-xs md:text-sm text-[#F9F9F8]/70 leading-relaxed mb-4 font-light">
+          Orlando's real estate ecosystem is dynamic, spanning high-density downtown high-rises, suburban communities in Winter Park and Lake Nona, and master-planned developments in Osceola and Lake counties. Market conditions can shift rapidly across zip codes.
+        </p>
+        <p class="text-xs md:text-sm text-[#F9F9F8]/70 leading-relaxed font-light">
+          Understanding local supply, demand trends, and median sales prices gives you strategic advantage when evaluating property values and long-term resale potential.
+        </p>
+      </section>
 
-            <!-- Step 1 -->
-            <section id="step-1" class="guide-step">
-                <div class="step-header">
-                    <div class="step-number">1</div>
-                    <h2>Financial Preparation & Mortgage Readiness</h2>
-                </div>
-                <p>Before touring properties in Central Florida, evaluating your financial foundation is vital. Getting pre-approved sets a defined budget and shows sellers that you are a qualified, serious buyer in competitive markets like Orange and Seminole counties.</p>
-                
-                <div class="checklist-box">
-                    <h4>Key Steps in Financial Readiness</h4>
-                    <ul>
-                        <li><strong>Check Your Credit Profile:</strong> Aim for optimal credit scores to secure competitive mortgage rates.</li>
-                        <li><strong>Establish Your Budget:</strong> Factor in home purchase price, property taxes, homeowners insurance, and HOA fees.</li>
-                        <li><strong>Secure Pre-Approval:</strong> Consult with a reputable lender to obtain a formal pre-approval letter.</li>
-                        <li><strong>Explore Assistance Programs:</strong> First-time buyers may qualify for down payment assistance programs through state initiatives.</li>
-                    </ul>
-                </div>
-            </section>
+      <!-- Step 3 -->
+      <section id="step-3" class="border border-[#E5D3B3]/20 bg-white/[0.02] p-8 md:p-10">
+        <div class="flex items-center gap-4 mb-6">
+          <span class="font-serif-luxury text-3xl font-bold text-[#E5D3B3] border border-[#E5D3B3]/40 w-12 h-12 flex items-center justify-center">03</span>
+          <h2 class="font-serif-luxury text-2xl md:text-3xl font-light text-[#F9F9F8]">Partnering with a REALTOR®</h2>
+        </div>
+        <p class="text-xs md:text-sm text-[#F9F9F8]/70 leading-relaxed mb-6 font-light">
+          Not all real estate agents are REALTORS®. A REALTOR® is a licensed professional who subscribes to the strict Code of Ethics of the National Association of REALTORS®. Working with a dedicated buyer's agent provides you with expert representation, local neighborhood insights, and skilled contract negotiation at no additional direct cost to most buyers.
+        </p>
+        
+        <div class="border-l-2 border-[#E5D3B3] bg-[#0F1115]/60 p-6 space-y-3">
+          <h4 class="text-xs uppercase tracking-[0.2em] text-[#E5D3B3] font-semibold">What Your Buyer Agent Does for You</h4>
+          <ul class="space-y-2 text-xs text-[#F9F9F8]/80 font-light">
+            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-[#E5D3B3] mt-0.5"></i> <span>Provides real-time MLS data and off-market inventory insights.</span></li>
+            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-[#E5D3B3] mt-0.5"></i> <span>Navigates Florida-specific real estate disclosures and contracts.</span></li>
+            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-[#E5D3B3] mt-0.5"></i> <span>Negotiates offer terms, contingencies, and seller concessions on your behalf.</span></li>
+            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-[#E5D3B3] mt-0.5"></i> <span>Coordinates home inspections, appraisals, and title services through closing.</span></li>
+          </ul>
+        </div>
+      </section>
 
-            <!-- Step 2 -->
-            <section id="step-2" class="guide-step">
-                <div class="step-header">
-                    <div class="step-number">2</div>
-                    <h2>Understanding the Central Florida Market</h2>
-                </div>
-                <p>Orlando's real estate ecosystem is dynamic, spanning high-density downtown high-rises, suburban communities in Winter Park and Lake Nona, and master-planned developments in Osceola and Lake counties. Market conditions can shift rapidly across zip codes.</p>
-                <p>Understanding local supply, demand trends, and median sales prices gives you strategic advantage when evaluating property values and long-term resale potential.</p>
-            </section>
+      <!-- Step 4 -->
+      <section id="step-4" class="border border-[#E5D3B3]/20 bg-white/[0.02] p-8 md:p-10">
+        <div class="flex items-center gap-4 mb-6">
+          <span class="font-serif-luxury text-3xl font-bold text-[#E5D3B3] border border-[#E5D3B3]/40 w-12 h-12 flex items-center justify-center">04</span>
+          <h2 class="font-serif-luxury text-2xl md:text-3xl font-light text-[#F9F9F8]">Making an Offer & Negotiating Terms</h2>
+        </div>
+        <p class="text-xs md:text-sm text-[#F9F9F8]/70 leading-relaxed font-light">
+          Once you locate the ideal home, your REALTOR® will draft a comprehensive Purchase and Sale Agreement (commonly utilizing standard Florida Realtors® / Florida Bar forms). This contract details purchase price, financing terms, escrow deposits, inspection timelines, and target closing dates.
+        </p>
+      </section>
 
-            <!-- Step 3 -->
-            <section id="step-3" class="guide-step">
-                <div class="step-header">
-                    <div class="step-number">3</div>
-                    <h2>Partnering with a REALTOR®</h2>
-                </div>
-                <p>Not all real estate agents are REALTORS®. A REALTOR® is a licensed professional who subscribes to the strict Code of Ethics of the National Association of REALTORS®. Working with a dedicated buyer's agent provides you with expert representation, local neighborhood insights, and skilled contract negotiation at no additional direct cost to most buyers.</p>
-                
-                <div class="checklist-box">
-                    <h4>What Your Buyer Agent Does for You</h4>
-                    <ul>
-                        <li>Provides real-time MLS data and off-market inventory insights.</li>
-                        <li>Navigates Florida-specific real estate disclosures and contracts.</li>
-                        <li>Negotiates offer terms, contingencies, and seller concessions on your behalf.</li>
-                        <li>Coordinates home inspections, appraisals, and title services through closing.</li>
-                    </ul>
-                </div>
-            </section>
+      <!-- Step 5 -->
+      <section id="step-5" class="border border-[#E5D3B3]/20 bg-white/[0.02] p-8 md:p-10">
+        <div class="flex items-center gap-4 mb-6">
+          <span class="font-serif-luxury text-3xl font-bold text-[#E5D3B3] border border-[#E5D3B3]/40 w-12 h-12 flex items-center justify-center">05</span>
+          <h2 class="font-serif-luxury text-2xl md:text-3xl font-light text-[#F9F9F8]">Due Diligence, Inspection & Closing</h2>
+        </div>
+        <p class="text-xs md:text-sm text-[#F9F9F8]/70 leading-relaxed mb-4 font-light">
+          In Florida, standard contracts include an inspection period (often 10–15 days) during which you conduct professional property assessments. In addition to a general home inspection, Central Florida buyers frequently schedule specialized inspections for roofs, HVAC systems, wood-destroying organisms (WDO/termites), and pool systems.
+        </p>
+        <p class="text-xs md:text-sm text-[#F9F9F8]/70 leading-relaxed font-light">
+          Once inspections, appraisals, and title work are complete, you will conduct a final walk-through before executing closing documents at the title company.
+        </p>
+      </section>
 
-            <!-- Step 4 -->
-            <section id="step-4" class="guide-step">
-                <div class="step-header">
-                    <div class="step-number">4</div>
-                    <h2>Making an Offer & Negotiating Terms</h2>
-                </div>
-                <p>Once you locate the ideal home, your REALTOR® will draft a comprehensive Purchase and Sale Agreement (commonly utilizing standard Florida Realtors® / Florida Bar forms). This contract details purchase price, financing terms, escrow deposits, inspection timelines, and target closing dates.</p>
-            </section>
+      <!-- Official Resources Hub -->
+      <section id="official-resources" class="border border-[#E5D3B3]/30 bg-gradient-to-b from-[#171A21] to-[#0F1115] p-8 md:p-10">
+        <div class="text-center mb-8">
+          <span class="text-[#E5D3B3] uppercase text-xs tracking-[0.3em] block mb-2">Verified Industry Portals</span>
+          <h2 class="font-serif-luxury text-3xl text-[#F9F9F8]">Official Consumer Resources</h2>
+          <p class="text-xs text-[#F9F9F8]/60 mt-2 font-light">Access verified buyer tools, educational handouts, and market data from official REALTOR® associations.</p>
+        </div>
 
-            <!-- Step 5 -->
-            <section id="step-5" class="guide-step">
-                <div class="step-header">
-                    <div class="step-number">5</div>
-                    <h2>Due Diligence, Inspection & Closing</h2>
-                </div>
-                <p>In Florida, standard contracts include an inspection period (often 10–15 days) during which you conduct professional property assessments. In addition to a general home inspection, Central Florida buyers frequently schedule specialized inspections for roofs, HVAC systems, wood-destroying organisms (WDO/termites), and pool systems.</p>
-                <p>Once inspections, appraisals, and title work are complete, you will conduct a final walk-through before executing closing documents at the title company.</p>
-            </section>
+        <div class="grid md:grid-cols-3 gap-6">
+          
+          <!-- National Realtor Card -->
+          <div class="border border-[#E5D3B3]/20 bg-[#0F1115]/80 p-6 flex flex-col justify-between hover:border-[#E5D3B3] transition-colors">
+            <div>
+              <span class="text-[9px] uppercase tracking-[0.2em] text-[#E5D3B3] block mb-2">National Level</span>
+              <h3 class="font-serif-luxury text-xl font-semibold mb-3">National Association of REALTORS®</h3>
+              <p class="text-xs text-[#F9F9F8]/60 font-light leading-relaxed mb-6">
+                Explore comprehensive buyer guides, home preparation checklists, and national housing education resources directly from NAR.
+              </p>
+            </div>
+            <a href="https://www.nar.realtor/news/tools/client-education/handouts-for-buyers/how-to-prepare-to-buy-a-home" target="_blank" class="inline-flex items-center gap-2 text-xs text-[#E5D3B3] uppercase tracking-wider font-semibold hover:underline">
+              NAR Buyer Guide <i class="fa-solid fa-arrow-right text-[10px]"></i>
+            </a>
+          </div>
 
-            <!-- Official Resources Hub -->
-            <section id="official-resources" class="resource-section">
-                <h2>Official Consumer Resources</h2>
-                <p class="sub">Access verified buyer tools, educational handouts, and market data from official REALTOR® associations.</p>
+          <!-- Florida Realtor Card -->
+          <div class="border border-[#E5D3B3]/20 bg-[#0F1115]/80 p-6 flex flex-col justify-between hover:border-[#E5D3B3] transition-colors">
+            <div>
+              <span class="text-[9px] uppercase tracking-[0.2em] text-[#E5D3B3] block mb-2">State Level</span>
+              <h3 class="font-serif-luxury text-xl font-semibold mb-3">Florida Realtors® Association</h3>
+              <p class="text-xs text-[#F9F9F8]/60 font-light leading-relaxed mb-6">
+                Access Florida-specific consumer guides, state housing assistance program overviews, and buyer resources.
+              </p>
+            </div>
+            <a href="https://www.floridahousing.org/programs/homebuyer-overview-page" target="_blank" class="inline-flex items-center gap-2 text-xs text-[#E5D3B3] uppercase tracking-wider font-semibold hover:underline">
+              Florida Housing <i class="fa-solid fa-arrow-right text-[10px]"></i>
+            </a>
+          </div>
 
-                <div class="resource-grid">
-                    
-                    <!-- National Realtor Card -->
-                    <div class="resource-card">
-                        <div>
-                            <div class="card-badge">National Level</div>
-                            <h3>National Association of REALTORS®</h3>
-                            <p>Explore comprehensive buyer guides, home preparation checklists, and national housing education resources directly from NAR.</p>
-                        </div>
-                        <a href="https://www.nar.realtor/news/tools/client-education/handouts-for-buyers/how-to-prepare-to-buy-a-home" target="_blank" class="resource-link">
-                            NAR Buyer Guide <i class="fa-solid fa-arrow-right"></i>
-                        </a>
-                    </div>
+          <!-- ORRA Card -->
+          <div class="border border-[#E5D3B3]/20 bg-[#0F1115]/80 p-6 flex flex-col justify-between hover:border-[#E5D3B3] transition-colors">
+            <div>
+              <span class="text-[9px] uppercase tracking-[0.2em] text-[#E5D3B3] block mb-2">Local Level</span>
+              <h3 class="font-serif-luxury text-xl font-semibold mb-3">Orlando Regional REALTOR® Assoc.</h3>
+              <p class="text-xs text-[#F9F9F8]/60 font-light leading-relaxed mb-6">
+                Review current Orlando housing market reports, zip code analytics, and Central Florida buyer tools.
+              </p>
+            </div>
+            <a href="https://www.orlandorealtors.org/marketreports" target="_blank" class="inline-flex items-center gap-2 text-xs text-[#E5D3B3] uppercase tracking-wider font-semibold hover:underline">
+              ORRA Reports <i class="fa-solid fa-arrow-right text-[10px]"></i>
+            </a>
+          </div>
 
-                    <!-- Florida Realtor Card -->
-                    <div class="resource-card">
-                        <div>
-                            <div class="card-badge">State Level</div>
-                            <h3>Florida Realtors® Association</h3>
-                            <p>Access Florida-specific consumer guides, state housing assistance program overviews, and buyer resources.</p>
-                        </div>
-                        <a href="https://www.floridahousing.org/programs/homebuyer-overview-page" target="_blank" class="resource-link">
-                            Florida Housing Resources <i class="fa-solid fa-arrow-right"></i>
-                        </a>
-                    </div>
+        </div>
+      </section>
 
-                    <!-- ORRA Card -->
-                    <div class="resource-card">
-                        <div>
-                            <div class="card-badge">Local Level</div>
-                            <h3>Orlando Regional REALTOR® Association</h3>
-                            <p>Review current Orlando housing market reports, zip code analytics, and Central Florida buyer tools.</p>
-                        </div>
-                        <a href="https://www.orlandorealtors.org/marketreports" target="_blank" class="resource-link">
-                            ORRA Market Reports <i class="fa-solid fa-arrow-right"></i>
-                        </a>
-                    </div>
+      <!-- Consultation CTA Section -->
+      <section id="consultation" class="border border-[#E5D3B3]/30 bg-[#0F1115] p-8 md:p-12 text-center">
+        <span class="text-[#E5D3B3] uppercase text-xs tracking-[0.3em] block mb-2">Private Advisory</span>
+        <h2 class="font-serif-luxury text-3xl md:text-4xl font-light mb-4">Ready to Begin Your Home Search?</h2>
+        <p class="text-xs md:text-sm text-[#F9F9F8]/70 max-w-xl mx-auto mb-8 font-light leading-relaxed">
+          Schedule a private consultation with Christopher Campbell PA to discuss your specific home buying requirements, off-market listings, and acquisition strategy across Greater Orlando.
+        </p>
+        <a href="mailto:contact@christophercampbellrealty.com" class="inline-block border border-[#E5D3B3] text-[#E5D3B3] px-8 py-4 text-xs uppercase tracking-[0.2em] hover:bg-[#E5D3B3] hover:text-[#0F1115] transition-all">
+          Request Private Consultation
+        </a>
+      </section>
 
-                </div>
-            </section>
+    </main>
+  </div>
 
-        </main>
+  <!-- Footer -->
+  <footer class="bg-[#0F1115] border-t border-[#E5D3B3]/15 text-[#F9F9F8]/60 py-16 px-6 lg:px-12 text-xs font-light">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+      <div class="space-y-3">
+        <span class="font-serif-luxury text-xl font-bold text-[#E5D3B3] uppercase tracking-wider block">
+          Christopher Campbell PA
+        </span>
+        <p class="text-[10px] uppercase tracking-[0.2em] text-[#F9F9F8]/80">Charles Rutenberg Realty Orlando</p>
+        <p class="text-[#F9F9F8]/50 leading-relaxed text-[11px]">
+          Providing bespoke real estate advisory services across Orange, Seminole, Osceola, and Lake counties.
+        </p>
+      </div>
+
+      <div>
+        <h4 class="text-[#E5D3B3] uppercase tracking-[0.2em] text-[11px] mb-4 font-semibold">Client Portals</h4>
+        <ul class="space-y-2 text-[#F9F9F8]/70">
+          <li><a href="index.html" class="hover:text-[#E5D3B3] transition-colors">Home Landing Page</a></li>
+          <li><a href="buyers.html" class="text-[#E5D3B3]">Buyer Resource Portal</a></li>
+          <li><a href="sellers.html" class="hover:text-[#E5D3B3] transition-colors">Seller Resource Portal</a></li>
+          <li><a href="investors.html" class="hover:text-[#E5D3B3] transition-colors">Investor Advisory Portal</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-[#E5D3B3] uppercase tracking-[0.2em] text-[11px] mb-4 font-semibold">Industry Associations</h4>
+        <ul class="space-y-2 text-[#F9F9F8]/70">
+          <li><a href="https://www.nar.realtor" target="_blank" class="hover:text-[#E5D3B3] transition-colors">National Assoc. of REALTORS®</a></li>
+          <li><a href="https://www.floridarealtors.org" target="_blank" class="hover:text-[#E5D3B3] transition-colors">Florida Realtors®</a></li>
+          <li><a href="https://www.orlandorealtors.org" target="_blank" class="hover:text-[#E5D3B3] transition-colors">Orlando Regional REALTOR® Assoc.</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-[#E5D3B3] uppercase tracking-[0.2em] text-[11px] mb-4 font-semibold">Contact & Advisory</h4>
+        <p class="text-[#F9F9F8]/70 leading-relaxed text-[11px]">
+          Charles Rutenberg Realty Orlando<br/>
+          Greater Orlando Area, Florida<br/>
+          Direct Consultation Available by Appointment
+        </p>
+      </div>
     </div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-grid">
-            <div class="footer-col">
-                <h4>Orlando Luxury Realty</h4>
-                <p>Providing premium residential real estate services throughout Orange, Seminole, Osceola, and Lake counties.</p>
-            </div>
-            <div class="footer-col">
-                <h4>Quick Links</h4>
-                <ul class="footer-links">
-                    <li><a href="#">Search Properties</a></li>
-                    <li><a href="#">Featured Communities</a></li>
-                    <li><a href="#">Home Buyer's Guide</a></li>
-                    <li><a href="#">Home Valuation</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Official Associations</h4>
-                <ul class="footer-links">
-                    <li><a href="https://www.nar.realtor" target="_blank">National Assoc. of REALTORS®</a></li>
-                    <li><a href="https://www.floridarealtors.org" target="_blank">Florida Realtors®</a></li>
-                    <li><a href="https://www.orlandorealtors.org" target="_blank">Orlando Regional REALTOR® Assoc.</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Contact Us</h4>
-                <p>100 E. Pine Street, Suite 400<br>Orlando, FL 32801<br>Direct: (407) 555-0199</p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Orlando Luxury Realty. Equal Housing Opportunity. All real estate information deemed reliable but not guaranteed.</p>
-        </div>
-    </footer>
+    <div class="max-w-6xl mx-auto border-t border-white/5 pt-8 text-center text-[10px] text-[#F9F9F8]/40">
+      <p>&copy; Christopher Campbell PA | Charles Rutenberg Realty Orlando. Equal Housing Opportunity. All information deemed reliable but not guaranteed.</p>
+    </div>
+  </footer>
 
 </body>
 </html>
