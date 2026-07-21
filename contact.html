@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Private Consultation & Real Estate Advisory | Christopher Campbell PA</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body { font-family: 'Montserrat', sans-serif; }
+    .font-serif-luxury { font-family: 'Cormorant Garamond', serif; }
+    
+    /* Custom radio styling for dark luxury theme */
+    .intent-card input[type="radio"]:checked + div {
+      border-color: #E5D3B3;
+      background-color: rgba(229, 211, 179, 0.08);
+    }
+    .intent-card input[type="radio"]:checked + div .intent-icon {
+      color: #E5D3B3;
+    }
+  </style>
+</head>
+<body class="bg-[#0F1115] text-[#F9F9F8] antialiased">
+
+  <!-- Floating Navigation Bar -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-[#0F1115]/90 backdrop-blur-md border-b border-[#E5D3B3]/15 px-6 lg:px-12 py-4 flex justify-between items-center">
+    <!-- Brand Title -->
+    <a href="index.html" class="flex flex-col">
+      <span class="font-serif-luxury text-2xl md:text-3xl tracking-[0.15em] font-bold text-[#E5D3B3] uppercase">
+        Christopher Campbell PA
+      </span>
+      <span class="text-[10px] uppercase tracking-[0.25em] text-[#F9F9F8]/70 -mt-1 font-light">
+        Charles Rutenberg Realty Orlando
+      </span>
+      <span class="text-[8px] uppercase tracking-[0.35em] text-[#F9F9F8]/40 mt-0.5">
+        Luxury Real Estate & Capital Advisory
+      </span>
+    </a>
+    
+    <!-- Main Navigation Links -->
+    <nav class="hidden md:flex space-x-8 text-xs tracking-[0.2em] uppercase font-light text-[#F9F9F8]/80">
+      <a href="index.html" class="hover:text-[#E5D3B3] transition-colors">Home</a>
+      <a href="buyers.html" class="hover:text-[#E5D3B3] transition-colors">Buyers</a>
+      <a href="sellers.html" class="hover:text-[#E5D3B3] transition-colors">Sellers</a>
+      <a href="investors.html" class="hover:text-[#E5D3B3] transition-colors">Investors</a>
+      <a href="contact.html" class="text-[#E5D3B3] font-normal">Contact</a>
+    </nav>
+
+    <!-- Call To Action -->
+    <a href="#consultation-form" class="hidden sm:inline-block border border-[#E5D3B3] text-[#E5D3B3] px-5 py-2.5 text-xs uppercase tracking-[0.15em] hover:bg-[#E5D3B3] hover:text-[#0F1115] transition-all">
+      Schedule Session
+    </a>
+  </header>
+
+  <!-- Hero Header Section -->
+  <section class="relative pt-40 pb-16 px-6 lg:px-12 bg-gradient-to-b from-[#171A21] to-[#0F1115] border-b border-[#E5D3B3]/10 text-center">
+    <div class="max-w-4xl mx-auto">
+      <span class="text-[#E5D3B3] uppercase text-xs tracking-[0.3em] mb-3 block">Bespoke Real Estate Services</span>
+      <h1 class="font-serif-luxury text-4xl md:text-6xl font-light leading-tight mb-6">
+        Private Consultation <br/><em class="italic text-[#E5D3B3]">& Executive Advisory</em>
+      </h1>
+      <p class="text-[#F9F9F8]/70 text-sm md:text-base max-w-2xl mx-auto font-light leading-relaxed">
+        Whether evaluating residential market value, planning a 1031 exchange, or seeking discrete buyer representation across Greater Orlando—select your inquiry category below.
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Form Container -->
+  <main id="consultation-form" class="max-w-4xl mx-auto px-6 py-16">
+    <form class="border border-[#E5D3B3]/25 bg-white/[0.02] p-8 md:p-12 shadow-2xl space-y-10">
+      
+      <!-- STEP 1: SELECT INTENT -->
+      <div>
+        <label class="text-xs uppercase tracking-[0.25em] text-[#E5D3B3] font-semibold block mb-2">
+          01. Select Inquiry Type <span class="text-red-400">*</span>
+        </label>
+        <p class="text-xs text-[#F9F9F8]/50 font-light mb-6">Choose the topic that best aligns with your goals to customize your intake.</p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          
+          <!-- Option A: Private Consultation -->
+          <label class="intent-card cursor-pointer relative">
+            <input type="radio" name="inquiry_type" value="consultation" class="sr-only" checked onclick="toggleConditionalFields('consultation')" />
+            <div class="border border-[#E5D3B3]/20 bg-[#0F1115] p-5 h-full flex flex-col justify-between transition-all hover:border-[#E5D3B3]/60">
+              <i class="fa-solid fa-handshake-simple intent-icon text-xl text-[#F9F9F8]/40 mb-3 transition-colors"></i>
+              <div>
+                <h3 class="text-xs uppercase tracking-wider font-semibold text-[#F9F9F8]">Private Consultation</h3>
+                <p class="text-[10px] text-[#F9F9F8]/50 font-light mt-1">1-on-1 strategic real estate planning</p>
+              </div>
+            </div>
+          </label>
+
+          <!-- Option B: Home Valuation -->
+          <label class="intent-card cursor-pointer relative">
+            <input type="radio" name="inquiry_type" value="valuation" class="sr-only" onclick="toggleConditionalFields('valuation')" />
+            <div class="border border-[#E5D3B3]/20 bg-[#0F1115] p-5 h-full flex flex-col justify-between transition-all hover:border-[#E5D3B3]/60">
+              <i class="fa-solid fa-chart-line intent-icon text-xl text-[#F9F9F8]/40 mb-3 transition-colors"></i>
+              <div>
+                <h3 class="text-xs uppercase tracking-wider font-semibold text-[#F9F9F8]">Home Valuation</h3>
+                <p class="text-[10px] text-[#F9F9F8]/50 font-light mt-1">CMA & comprehensive equity analysis</p>
+              </div>
+            </div>
+          </label>
+
+          <!-- Option C: Investment Advisory -->
+          <label class="intent-card cursor-pointer relative">
+            <input type="radio" name="inquiry_type" value="investment" class="sr-only" onclick="toggleConditionalFields('investment')" />
+            <div class="border border-[#E5D3B3]/20 bg-[#0F1115] p-5 h-full flex flex-col justify-between transition-all hover:border-[#E5D3B3]/60">
+              <i class="fa-solid fa-building-columns intent-icon text-xl text-[#F9F9F8]/40 mb-3 transition-colors"></i>
+              <div>
+                <h3 class="text-xs uppercase tracking-wider font-semibold text-[#F9F9F8]">Investment Advisory</h3>
+                <p class="text-[10px] text-[#F9F9F8]/50 font-light mt-1">Commercial, Residential & 1031 Exchange</p>
+              </div>
+            </div>
+          </label>
+
+          <!-- Option D: Contact Agent -->
+          <label class="intent-card cursor-pointer relative">
+            <input type="radio" name="inquiry_type" value="general" class="sr-only" onclick="toggleConditionalFields('general')" />
+            <div class="border border-[#E5D3B3]/20 bg-[#0F1115] p-5 h-full flex flex-col justify-between transition-all hover:border-[#E5D3B3]/60">
+              <i class="fa-solid fa-envelope-open-text intent-icon text-xl text-[#F9F9F8]/40 mb-3 transition-colors"></i>
+              <div>
+                <h3 class="text-xs uppercase tracking-wider font-semibold text-[#F9F9F8]">Direct Contact</h3>
+                <p class="text-[10px] text-[#F9F9F8]/50 font-light mt-1">General inquiries & quick questions</p>
+              </div>
+            </div>
+          </label>
+
+        </div>
+      </div>
+
+      <!-- STEP 2: CLIENT CONTACT INFORMATION -->
+      <div class="pt-6 border-t border-[#E5D3B3]/15">
+        <label class="text-xs uppercase tracking-[0.25em] text-[#E5D3B3] font-semibold block mb-6">
+          02. Personal & Contact Information
+        </label>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label class="text-[11px] uppercase tracking-wider text-[#F9F9F8]/70 block mb-2">First Name <span class="text-red-400">*</span></label>
+            <input type="text" required placeholder="John" class="w-full bg-[#0F1115] border border-[#E5D3B3]/20 px-4 py-3 text-xs text-[#F9F9F8] focus:border-[#E5D3B3] focus:outline-none transition-colors" />
+          </div>
+
+          <div>
+            <label class="text-[11px] uppercase tracking-wider text-[#F9F9F8]/70 block mb-2">Last Name <span class="text-red-400">*</span></label>
+            <input type="text" required placeholder="Doe" class="w-full bg-[#0F1115] border border-[#E5D3B3]/20 px-4 py-3 text-xs text-[#F9F9F8] focus:border-[#E5D3B3] focus:outline-none transition-colors" />
+          </div>
+
+          <div>
+            <label class="text-[11px] uppercase tracking-wider text-[#F9F9F8]/70 block mb-2">Email Address <span class="text-red-400">*</span></label>
+            <input type="email" required placeholder="john@example.com" class="w-full bg-[#0F1115] border border-[#E5D3B3]/20 px-4 py-3 text-xs text-[#F9F9F8] focus:border-[#E5D3B3] focus:outline-none transition-colors" />
+          </div>
+
+          <div>
+            <label class="text-[11px] uppercase tracking-wider text-[#F9F9F8]/70 block mb-2">Phone Number <span class="text-red-400">*</span></label>
+            <input type="tel" required placeholder="(407) 555-0199" class="w-full bg-[#0F1115] border border-[#E5D3B3]/20 px-4 py-3 text-xs text-[#F9F9F8] focus:border-[#E5D3B3] focus:outline-none transition-colors" />
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 3: DYNAMIC/CONDITIONAL FIELDS -->
+      <div id="dynamic-section" class="pt-6 border-t border-[#E5D3B3]/15">
+        
+        <!-- Condition A: Private Consultation Fields -->
+        <div id="fields-consultation" class="space-y-6">
+          <label class="text-xs uppercase tracking-[0.25em] text-[#E5D3B3] font-semibold block mb-2">
+            03. Consultation Details
+          </label>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label class="text-[11px] uppercase tracking-wider text-[#F9F9F8]/70 block mb-2">Preferred Consultation Format</label>
+              <select class="w-full bg-[#0F1115] border border-[#E5D3B3]/20 px-4 py-3 text-xs text-[#F9F9F8] focus:border-[#E5D3B3] focus:outline-none transition-colors">
+                <option value="in_person">In-Person (Orlando Office)</option>
+                <option value="virtual">Virtual Video Conference (Zoom)</option>
+                <option value="phone">Phone Call</option>
+              </select>
+            </div>
+            <div>
+              <label class="text-[11px] uppercase tracking-wider text-[#F9F9F8]/70 block mb-2">Target Timeframe</label>
+              <select class="w-full bg-[#0F1115] border border-[#E5D3B3]/20 px-4 py-3 text-xs text-[#F9F9F8] focus:border-[#E5D3B3] focus:outline-none transition-colors">
+                <option value="immediate">Immediate (1-3 weeks)</option>
+                <option value="30_60_days">30-60 Days</option>
+                <option value="planning">Long-Term Planning (3+ months)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Condition B: Home Valuation Fields -->
+        <div id="fields-valuation" class="space-y-6 hidden">
+          <label class="text-xs uppercase tracking-[0.25em] text-[#E5D3B3] font-semibold block mb-2">
+            03. Property to be Valued
+          </label>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="md:col-span-2">
+              <label class="text-[11px] uppercase tracking-wider text-[#F9F9F8]/70 block mb-2">Property Street Address <span class="text-red-400">*</span></label>
+              <input type="text" placeholder="123 Park Avenue, Winter Park, FL 32789" class="w-full bg-[#0F1115] border border-[#E5D3B3]/20 px-4 py-3 text-xs text-[#F9F9F8] focus:border-[#E5D3B3] focus:outline-none transition-colors" />
+            </div>
+            <div>
+              <label class="text-[11px] uppercase tracking-wider text-[#F9F9F8]/70 block mb-2">Property Type</label>
+              <select class="w-full bg-[#0F1115] border border-[#E5D3B3]/20 px-4 py-3 text-xs text-[#F9F9F8] focus:border-[#E5D3B3] focus:outline-none transition-colors">
+                <option value="single_family">Single Family Home</option>
+                <option value="townhouse_condo">Townhouse / Condo</option>
+                <option value="multi_family">Multi-Family</option>
+                <option value="luxury_estate">Luxury Estate / Custom Home</option>
+              </select>
+            </div>
+            <div>
+              <label class="text-[11px] uppercase tracking-wider text-[#F9F9F8]/70 block mb-2">Estimated Timeline to Sell</label>
+              <select class="w-full bg-[#0F1115] border border-[#E5D3B3]/20 px-4 py-3 text-xs text-[#F9F9F8] focus:border-[#E5D3B3] focus:outline-none transition-colors">
+                <option value="curious">Just curious about current value</option>
+                <option value="0_3_months">0 - 3 Months</option>
+                <option value="3_6_months">3 - 6 Months</option>
+                <option value="6_plus_months">6+ Months</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Condition C: Investment Advisory Fields -->
+        <div id="fields-investment" class="space-y-6 hidden">
+          <label class="text-xs uppercase tracking-[0.25em] text-[#E5D3B3] font-semibold block mb-2">
+            03. Capital & Asset Criteria
+          </label>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label class="text-[11px] uppercase tracking-wider text-[#F9F9F8]/70 block mb-2">Asset Class Interest</label>
+              <select class="w-full bg-[#0F1115] border border-[#E5D3B3]/20 px-4 py-3 text-xs text-[#F9F9F8] focus:border-[#E5D3B3] focus:outline-none transition-colors">
+                <option value="residential_portfolio">Residential Long-Term Rental</option>
+                <option value="short_term_rental">Vacation / Short-Term Rental</option>
+                <option value="commercial_industrial">Commercial / Industrial / Retail</option>
+                <option value="1031_exchange">1031 Tax-Deferred Exchange</option>
+              </select>
+            </div>
+            <div>
+              <label class="text-[11px] uppercase tracking-wider text-[#F9F9F8]/70 block mb-2">Target Capital Allocation</label>
+              <select class="w-full bg-[#0F1115] border border-[#E5D3B3]/20 px-4 py-3 text-xs text-[#F9F9F8] focus:border-[#E5D3B3] focus:outline-none transition-colors">
+                <option value="under_500k">$250k – $500k</option>
+                <option value="500k_1m">$500k – $1.0M</option>
+                <option value="1m_3m">$1.0M – $3.0M</option>
+                <option value="3m_plus">$3.0M+</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Condition D: General Contact -->
+        <div id="fields-general" class="space-y-6 hidden">
+          <label class="text-xs uppercase tracking-[0.25em] text-[#E5D3B3] font-semibold block mb-2">
+            03. Message Subject
+          </label>
+          <div>
+            <label class="text-[11px] uppercase tracking-wider text-[#F9F9F8]/70 block mb-2">Subject / Inquiry Context</label>
+            <input type="text" placeholder="e.g., Question regarding a property listing" class="w-full bg-[#0F1115] border border-[#E5D3B3]/20 px-4 py-3 text-xs text-[#F9F9F8] focus:border-[#E5D3B3] focus:outline-none transition-colors" />
+          </div>
+        </div>
+
+      </div>
+
+      <!-- STEP 4: NOTES & COMMENTS -->
+      <div class="pt-6 border-t border-[#E5D3B3]/15">
+        <label class="text-[11px] uppercase tracking-wider text-[#F9F9F8]/70 block mb-2">
+          Additional Details or Questions
+        </label>
+        <textarea rows="4" placeholder="Please share any specific goals, timelines, or context regarding your request..." class="w-full bg-[#0F1115] border border-[#E5D3B3]/20 p-4 text-xs text-[#F9F9F8] focus:border-[#E5D3B3] focus:outline-none transition-colors"></textarea>
+      </div>
+
+      <!-- SUBMIT BUTTON & DISCLAIMER -->
+      <div class="pt-4 space-y-4 text-center">
+        <button type="submit" class="w-full sm:w-auto border border-[#E5D3B3] bg-[#E5D3B3] text-[#0F1115] px-12 py-4 text-xs font-semibold uppercase tracking-[0.2em] hover:bg-transparent hover:text-[#E5D3B3] transition-all">
+          Submit Private Request <i class="fa-solid fa-arrow-right ml-2 text-[10px]"></i>
+        </button>
+        <p class="text-[10px] text-[#F9F9F8]/40 font-light leading-relaxed">
+          Your information is held in strict confidence. Submissions are reviewed directly by Christopher Campbell PA.
+        </p>
+      </div>
+
+    </form>
+  </main>
+
+  <!-- Interactive Script for Form Fields -->
+  <script>
+    function toggleConditionalFields(selectedType) {
+      const fieldGroups = ['consultation', 'valuation', 'investment', 'general'];
+      
+      fieldGroups.forEach(type => {
+        const el = document.getElementById('fields-' + type);
+        if (type === selectedType) {
+          el.classList.remove('hidden');
+        } else {
+          el.classList.add('hidden');
+        }
+      });
+    }
+  </script>
+
+  <!-- Footer -->
+  <footer class="bg-[#0F1115] border-t border-[#E5D3B3]/15 text-[#F9F9F8]/60 py-16 px-6 lg:px-12 text-xs font-light">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+      <div class="space-y-3">
+        <span class="font-serif-luxury text-xl font-bold text-[#E5D3B3] uppercase tracking-wider block">
+          Christopher Campbell PA
+        </span>
+        <p class="text-[10px] uppercase tracking-[0.2em] text-[#F9F9F8]/80">Charles Rutenberg Realty Orlando</p>
+        <p class="text-[#F9F9F8]/50 leading-relaxed text-[11px]">
+          Bespoke real estate advisory across Greater Orlando, Winter Park, Lake Nona, and Central Florida.
+        </p>
+      </div>
+
+      <div>
+        <h4 class="text-[#E5D3B3] uppercase tracking-[0.2em] text-[11px] mb-4 font-semibold">Portals</h4>
+        <ul class="space-y-2 text-[#F9F9F8]/70">
+          <li><a href="index.html" class="hover:text-[#E5D3B3] transition-colors">Home Landing</a></li>
+          <li><a href="buyers.html" class="hover:text-[#E5D3B3] transition-colors">Buyer Resource Portal</a></li>
+          <li><a href="sellers.html" class="hover:text-[#E5D3B3] transition-colors">Seller Resource Portal</a></li>
+          <li><a href="investors.html" class="hover:text-[#E5D3B3] transition-colors">Investor Advisory Portal</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-[#E5D3B3] uppercase tracking-[0.2em] text-[11px] mb-4 font-semibold">Associations</h4>
+        <ul class="space-y-2 text-[#F9F9F8]/70">
+          <li><a href="https://www.nar.realtor" target="_blank" class="hover:text-[#E5D3B3] transition-colors">National Assoc. of REALTORS®</a></li>
+          <li><a href="https://www.floridarealtors.org" target="_blank" class="hover:text-[#E5D3B3] transition-colors">Florida Realtors®</a></li>
+          <li><a href="https://www.orlandorealtors.org" target="_blank" class="hover:text-[#E5D3B3] transition-colors">Orlando Regional REALTOR® Assoc.</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-[#E5D3B3] uppercase tracking-[0.2em] text-[11px] mb-4 font-semibold">Brokerage</h4>
+        <p class="text-[#F9F9F8]/70 leading-relaxed text-[11px]">
+          Charles Rutenberg Realty Orlando<br/>
+          Greater Orlando Area, FL<br/>
+          Equal Housing Opportunity
+        </p>
+      </div>
+    </div>
+
+    <div class="max-w-6xl mx-auto border-t border-white/5 pt-8 text-center text-[10px] text-[#F9F9F8]/40">
+      <p>&copy; Christopher Campbell PA | Charles Rutenberg Realty Orlando. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
